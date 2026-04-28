@@ -147,10 +147,26 @@ Equipment Used:
 ESP32CAM
 USB Micro Data Cable
 
-Tools used: Arduino
+Tools used: Arduino, Google, Reddit
 
 Steps I Followed:
+1. Clone the repository by entering the following command to Command Prompt:
+git clone https://github.com/aadesh0706/IOT-ESP32-Evil-Twin-WiFi-Hacking-Deauthentication-Captive-Portal.git
+cd IOT-ESP32-Evil-Twin-WiFi-Hacking-Deauthentication-Captive-Portal
+
+2. Open Arduino (if it did not already open by cloning the repository) and upload the code to your ESP32CAM and press the Reset button once the upload is complete (you will see the phrase "Hard resetting via RTS pin...)
+3. Connect to the Rogue WiFi: "WiPhi_34732", Password: "d347h320"
+4. Click on "Open the Browser and Connect" OR manually enter "http://192.168.4.1/admin.html" into a browswer once connected to the rogue Wifi
+5. Select the WiFi you want to intercept and click on "Start EvilTwin"
+6. You will now lose WiFi connection (this is normal and exactly what you want to happen next)
+7. A rogue WiFi will be created under the same SSID as the WiFi you selected to intercept, select this WiFi to connect to 
+8. You will be redirected to a fake login page asking for the WiFi credentials, enter this information
+9. Any credentials entered are captured and stored on the ESP32
 
 Problems / Solutions: 
 
 Final Report:
+Deauthentication Attack: The ESP32 sends deauth packets to disconnect devices from their original network.
+Rogue Access Point: After being disconnected, the ESP32 broadcasts a rogue AP with a similar name (SSID) to the legitimate one.
+Captive Portal: When users attempt to connect to the rogue AP, they are redirected to a fake login page asking for WiFi credentials.
+Credentials Logged: Any credentials entered are captured and stored on the ESP32.
